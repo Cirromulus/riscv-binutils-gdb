@@ -276,14 +276,15 @@ const struct riscv_opcode riscv_opcodes[] =
 {"add",         0, {"I", 0},   "d,s,t",  MATCH_ADD, MASK_ADD, match_opcode, 0 },
 /* This is used for TLS, where the fourth arg is %tprel_add, to get a reloc
    applied to an add instruction, for relaxation to use.  */
+{"add",         0, {"I", 0},   "d,s,t,0",MATCH_ADD, MASK_ADD, match_opcode, 0 },
+{"add",         0, {"I", 0},   "d,s,j",  MATCH_ADDI, MASK_ADDI, match_opcode, INSN_ALIAS },
+
 //CUSTOM
-{"settaint.i",  0, {"I", 0},   "d,j", MATCH_SETTAINT_I, MASK_SETTAINT_I, match_opcode, 0 },
-{"settaint.r",  0, {"I", 0},   "d,s", MATCH_SETTAINT_R, MASK_SETTAINT_R, match_opcode, 0 },
+{"settaint",    0, {"I", 0},   "d,j", MATCH_SETTAINT_I, MASK_SETTAINT_I, match_opcode, 0 },
+{"settaint",    0, {"I", 0},   "d,s", MATCH_SETTAINT_R, MASK_SETTAINT_R, match_opcode, 0 },
 {"gettaint",    0, {"I", 0},   "d,s", MATCH_GETTAINT  , MASK_GETTAINT  , match_opcode, 0 },
 //CUSTOM
 
-{"add",         0, {"I", 0},   "d,s,t,0",MATCH_ADD, MASK_ADD, match_opcode, 0 },
-{"add",         0, {"I", 0},   "d,s,j",  MATCH_ADDI, MASK_ADDI, match_opcode, INSN_ALIAS },
 {"la",          0, {"I", 0},   "d,B",  0,    (int) M_LA,  match_never, INSN_MACRO },
 {"lla",         0, {"I", 0},   "d,B",  0,    (int) M_LLA,  match_never, INSN_MACRO },
 {"la.tls.gd",   0, {"I", 0},   "d,A",  0,    (int) M_LA_TLS_GD,  match_never, INSN_MACRO },
