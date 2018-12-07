@@ -284,6 +284,10 @@ const struct riscv_opcode riscv_opcodes[] =
 {"settaint",    0, {"I", 0},   "d,s", MATCH_SETTAINT_R, MASK_SETTAINT_R, match_opcode, 0 },
 {"gettaint",    0, {"I", 0},   "d,s", MATCH_GETTAINT  , MASK_GETTAINT  , match_opcode, 0 },
 //CUSTOM
+//CUSTOM AES START
+{"aesload",          0, {"I", 0},   "d,o(s)",  MATCH_AESLOAD, MASK_AESLOAD, match_opcode, INSN_DREF|INSN_4_BYTE },
+{"aessave",          0, {"I", 0},   "t,q(s)",  MATCH_AESSAVE, MASK_AESSAVE, match_opcode, INSN_DREF|INSN_4_BYTE },
+//CUSTOM AES ENDE
 
 {"la",          0, {"I", 0},   "d,B",  0,    (int) M_LA,  match_never, INSN_MACRO },
 {"lla",         0, {"I", 0},   "d,B",  0,    (int) M_LLA,  match_never, INSN_MACRO },
